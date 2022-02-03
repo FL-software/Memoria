@@ -301,6 +301,8 @@ function escolherCarta() {
     carta.src = baralho[carta.id].img;
 
     escolhidas.push(carta);
+                
+    carta.removeEventListener("click", escolherCarta); 
 
     if (escolhidas.length == 2){
         setTimeout(() => {
@@ -311,9 +313,6 @@ function escolherCarta() {
             {
                 carta1.src = "img/branco.jpg";
                 carta2.src = "img/branco.jpg";
-                
-                carta1.removeEventListener("click", escolherCarta); 
-                carta2.removeEventListener("click", escolherCarta);
 
                 ponto++;
 
@@ -321,6 +320,9 @@ function escolherCarta() {
             } else {            
                 carta1.src = "img/capa.jpg";
                 carta2.src = "img/capa.jpg";
+
+                carta1.addEventListener("click", escolherCarta); 
+                carta2.addEventListener("click", escolherCarta); 
             }       
 
             if (ponto == baralho.length -1 / 2) {
